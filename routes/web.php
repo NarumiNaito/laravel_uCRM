@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -7,7 +8,11 @@ use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\ItemController;
 
+
 Route::resource('items', ItemController::class)
+->middleware(['auth', 'verified']);
+
+Route::resource('customers', CustomersController::class)
 ->middleware(['auth', 'verified']);
 
 
